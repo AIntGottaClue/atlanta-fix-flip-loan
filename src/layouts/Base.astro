@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
 import {brand,domain} from '../data/cities';
-interface Props {title:string;description:string;path:string;jsonld?:object[]}
-const {title,description,path,jsonld=[]}=Astro.props;
+interface Props {title:string;description:string;path:string;jsonld?:object[];fabHref?:string}
+const {title,description,path,jsonld=[],fabHref='#deal-form'}=Astro.props;
 const canonical=`https://${domain}${path}`;
 ---
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ const canonical=`https://${domain}${path}`;
 </head>
 <body>
 <slot/>
-<a href="#deal-form" class="fab-deal" aria-label="Submit a project, jump to the form">
+<a href={fabHref} class="fab-deal" aria-label="Submit a project, jump to the form">
 <span class="fab-deal-ico" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
 <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6">
