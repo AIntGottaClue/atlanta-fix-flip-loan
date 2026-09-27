@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CityContent from '../components/CityContent.astro';
+import {brand,domain,cities} from '../data/cities';
+const title='Fix and Flip Loans in Atlanta, GA | Atlanta Fix & Flip Loan';
+const description='Connect with potential fix and flip loan options for Atlanta-area investment properties. Share your purchase and renovation plan for a project-specific review.';
+const faq=[{q:'Are you the lender?',a:'No. We connect investors with potential funding sources. Lenders determine eligibility and terms.'},{q:'Does submitting guarantee funding?',a:'No. A submission starts a review, not an approval or commitment.'}];
+const jsonld=[{'@context':'https://schema.org','@type':'WebSite',name:brand,url:`https://${domain}/`},{'@context':'https://schema.org','@type':'Organization',name:brand,url:`https://${domain}/`,description:'Investor funding connection service, not a direct lender.'},{'@context':'https://schema.org','@type':'Service',name:'Fix and flip loan connections',provider:{'@type':'Organization',name:brand},areaServed:cities.map(c=>({'@type':'City',name:c.name,containedInPlace:{'@type':'State',name:'Georgia'}}))},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))}];
+---
+<Base title={title} description={description} path="/" jsonld={jsonld}><Header/><main><CityContent cityName="metro Atlanta" location="Homepage" intro="Asset-based fix and flip funding starts with the Atlanta-area property and its renovation plan. Tell us about the home, the work you plan and how you expect to sell it. Atlanta Fix & Flip Loan helps connect investors with potential funding sources; we do not lend directly." angle="A bungalow near the BeltLine, a Marietta ranch and a Gwinnett subdivision home have different repair questions. Start with the property's condition, the work required and the closest useful resale comparisons." caution="An attractive address cannot tell you whether the repair budget works. Check the scope and discuss the actual project with a funding partner before relying on any possible terms." showCityGrid={true}/></main><Footer/></Base>

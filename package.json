@@ -1,0 +1,14 @@
+{
+  "name": "atlanta-fix-flip-loan",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && cp dist/sitemap-0.xml dist/sitemap.xml",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.13.0"
+  }
+}
