@@ -39,3 +39,97 @@ export const cities: City[] = [
 ];
 const countyRank: Record<string,number> = { Cobb:0, Clayton:1, DeKalb:2, Douglas:3, Fulton:4, Gwinnett:5, Henry:6 };
 cities.sort((a,b) => (countyRank[a.county] ?? 99) - (countyRank[b.county] ?? 99) || a.name.localeCompare(b.name));
+
+export interface Scenario { title:string; intro:string; items:string[]; outro:string }
+
+/** Three close geographic neighbors for each city page's nearby areas strip. */
+export const nearbyAreas: Record<string,string[]> = {
+  "atlanta": ["decatur", "east-point", "smyrna"],
+  "sandy-springs": ["brookhaven", "dunwoody", "roswell"],
+  "roswell": ["alpharetta", "sandy-springs", "marietta"],
+  "alpharetta": ["roswell", "milton", "johns-creek"],
+  "marietta": ["smyrna", "kennesaw", "powder-springs"],
+  "smyrna": ["marietta", "mableton", "atlanta"],
+  "kennesaw": ["acworth", "marietta", "powder-springs"],
+  "decatur": ["atlanta", "stone-mountain", "tucker"],
+  "duluth": ["norcross", "peachtree-corners", "suwanee"],
+  "lawrenceville": ["snellville", "duluth", "suwanee"],
+  "douglasville": ["powder-springs", "mableton", "atlanta"],
+  "mcdonough": ["stockbridge", "forest-park", "union-city"],
+  "acworth": ["kennesaw", "powder-springs", "marietta"],
+  "powder-springs": ["mableton", "marietta", "douglasville"],
+  "forest-park": ["college-park", "east-point", "stockbridge"],
+  "brookhaven": ["chamblee", "sandy-springs", "decatur"],
+  "dunwoody": ["sandy-springs", "chamblee", "brookhaven"],
+  "lithonia": ["stonecrest", "stone-mountain", "decatur"],
+  "stone-mountain": ["tucker", "lithonia", "snellville"],
+  "tucker": ["stone-mountain", "norcross", "decatur"],
+  "college-park": ["east-point", "forest-park", "union-city"],
+  "east-point": ["college-park", "atlanta", "forest-park"],
+  "johns-creek": ["alpharetta", "suwanee", "duluth"],
+  "norcross": ["peachtree-corners", "duluth", "tucker"],
+  "peachtree-corners": ["norcross", "duluth", "johns-creek"],
+  "stockbridge": ["mcdonough", "forest-park", "lithonia"],
+  "suwanee": ["duluth", "johns-creek", "lawrenceville"],
+  "snellville": ["lawrenceville", "stone-mountain", "lithonia"],
+  "mableton": ["smyrna", "powder-springs", "douglasville"],
+  "stonecrest": ["lithonia", "stone-mountain", "stockbridge"],
+  "chamblee": ["brookhaven", "dunwoody", "tucker"],
+  "milton": ["alpharetta", "roswell", "johns-creek"],
+  "union-city": ["college-park", "east-point", "forest-park"]
+};
+
+/** City pages that carry a scenario block and trimmed process/terms summaries. */
+export const priorityCities: string[] = ["atlanta", "mableton", "chamblee", "milton"];
+
+/**
+ * Illustrative worked examples for the priority city pages.
+ * Every number is made up to show the math, uses the placeholder loan terms,
+ * and is labeled as an example rather than a real deal, quote or offer.
+ */
+export const scenarios: Record<string, Scenario> = {
+  "atlanta": {
+    title: "Illustrative example: a West End renovation budget",
+    intro: "This is a made up example, not a real transaction, a quote or a promise of results. It shows how the numbers on a typical Atlanta bungalow project can be laid out so the moving parts are easy to see.",
+    items: [
+      "Suppose an investor contracts a 1940s bungalow near the West End's BeltLine corridor at $265,000 and plans an $85,000 renovation covering systems, kitchen, baths and exterior work.",
+      "Renovated bungalows nearby support a target resale around $430,000, so the after-repair estimate is $430,000. Under the illustrative terms on this site, an advance of up to 75% of that figure would cap the example loan near $322,500.",
+      "The purchase plus the renovation total $350,000, so this example buyer would plan to bring the difference plus closing costs, interest and reserves. A lender would set its own advance and terms on the actual file.",
+      "Permit and inspection questions in the City of Atlanta typically run through the Office of Buildings, and the contractor and closing attorney can confirm what the specific scope requires before the budget is final."
+    ],
+    outro: "The full funding process is laid out in our guide to <a href=\"/how-fix-and-flip-funding-works-in-georgia/\">how fix and flip funding works in Georgia</a>, and the math behind the example terms is on the <a href=\"/fix-and-flip-loan-costs/\">fix and flip loan costs</a> page."
+  },
+  "mableton": {
+    title: "Illustrative example: a ranch project near the Silver Comet Trail",
+    intro: "This is a made up example, not a real transaction, a quote or a promise of results. It shows how the numbers on a typical Mableton ranch project can be laid out so the moving parts are easy to see.",
+    items: [
+      "Suppose an investor contracts a 1970s ranch on a street near the Silver Comet Trail at $240,000 and plans a $70,000 renovation focused on the kitchen, baths, flooring and mechanical updates.",
+      "Comparable renovated ranches in the area support a target resale around $385,000, so the after-repair estimate is $385,000. Under the illustrative terms on this site, an advance of up to 75% of that figure would cap the example loan near $288,750.",
+      "The purchase plus the renovation total $310,000, so this example buyer would plan to bring the difference plus closing costs, interest and reserves. A lender would set its own advance and terms on the actual file.",
+      "Mableton incorporated recently, so jurisdiction and permitting questions for a specific parcel are worth confirming early. The closing attorney or the city can confirm which office reviews the scope."
+    ],
+    outro: "The full funding process is laid out in our guide to <a href=\"/how-fix-and-flip-funding-works-in-georgia/\">how fix and flip funding works in Georgia</a>, and the math behind the example terms is on the <a href=\"/fix-and-flip-loan-costs/\">fix and flip loan costs</a> page."
+  },
+  "chamblee": {
+    title: "Illustrative example: a postwar ranch near downtown Chamblee",
+    intro: "This is a made up example, not a real transaction, a quote or a promise of results. It shows how the numbers on a typical Chamblee ranch project can be laid out so the moving parts are easy to see.",
+    items: [
+      "Suppose an investor contracts a postwar ranch a few blocks from downtown Chamblee and the Dresden Drive corridor at $375,000 and plans a $95,000 renovation including a reworked kitchen, new baths and updated systems.",
+      "Renovated homes on nearby streets support a target resale around $580,000, so the after-repair estimate is $580,000. Under the illustrative terms on this site, an advance of up to 75% of that figure would cap the example loan near $435,000.",
+      "The purchase plus the renovation total $470,000, so this example buyer would plan to bring the difference plus closing costs, interest and reserves. A lender would set its own advance and terms on the actual file.",
+      "Lots in this part of Chamblee also attract teardown and infill interest, so the resale comparisons should match the finished home actually being planned rather than new construction. The closing attorney can confirm the file requirements for the parcel."
+    ],
+    outro: "The full funding process is laid out in our guide to <a href=\"/how-fix-and-flip-funding-works-in-georgia/\">how fix and flip funding works in Georgia</a>, and the math behind the example terms is on the <a href=\"/fix-and-flip-loan-costs/\">fix and flip loan costs</a> page."
+  },
+  "milton": {
+    title: "Illustrative example: a larger lot renovation near Crabapple",
+    intro: "This is a made up example, not a real transaction, a quote or a promise of results. It shows how the numbers on a typical Milton acreage project can be laid out so the moving parts are easy to see.",
+    items: [
+      "Suppose an investor contracts a home on a large lot near Crabapple at $550,000 and plans a $140,000 renovation covering interiors, exterior updates and site work.",
+      "Renovated properties with similar settings support a target resale around $850,000, so the after-repair estimate is $850,000. Under the illustrative terms on this site, an advance of up to 75% of that figure would cap the example loan near $637,500.",
+      "The purchase plus the renovation total $690,000, so this example buyer would plan to bring the difference plus closing costs, interest and reserves. A lender would set its own advance and terms on the actual file.",
+      "Larger lots can add site questions a subdivision project does not have, from driveway and drainage work to well or septic considerations. Those items belong in the written scope, and the closing attorney can confirm what the file needs."
+    ],
+    outro: "The full funding process is laid out in our guide to <a href=\"/how-fix-and-flip-funding-works-in-georgia/\">how fix and flip funding works in Georgia</a>, and the math behind the example terms is on the <a href=\"/fix-and-flip-loan-costs/\">fix and flip loan costs</a> page."
+  }
+};
