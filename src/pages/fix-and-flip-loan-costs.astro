@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {brand,domain} from '../data/cities';
+import {loanTerms} from '../data/loanTerms';
+const url=`https://${domain}/fix-and-flip-loan-costs/`;
+const faqs=[
+  {q:'Are the rates on this page real offers?',a:'No. Every figure on this page is an illustrative placeholder that shows how an offer might be presented. Actual rates, advances and fees come from a lender\u2019s written terms on your specific file.'},
+  {q:'What does after-repair value mean?',a:'After-repair value, or ARV, is the estimated resale price of the home once the planned renovation is complete. Lenders use it to size the advance, so the comparable sales behind the estimate matter.'},
+  {q:'Are there costs beyond the interest rate?',a:'Yes. Points or origination fees, closing attorney and title charges, insurance, and possible draw or inspection fees can all be part of a file. Ask for the complete fee list before you commit to any offer.'},
+  {q:'How is interest usually paid on a fix and flip loan?',a:'Many fix and flip loans are structured with monthly interest payments and the principal due when the home sells or the term ends. The lender\u2019s offer controls the actual structure, so read it closely.'},
+  {q:'Do all lenders charge the same?',a:'No. Pricing varies by lender, by property and by borrower. Comparing full written offers, not headline rates, is the only reliable way to know what a project will cost.'}
+];
+const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and Flip Loan Costs',url,description:'How fix and flip loan costs fit together: rates, after-repair value, advances, fees and an illustrative worked example using sample placeholder terms.',isPartOf:{'@type':'WebSite',name:brand,url:`https://${domain}/`}},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:'Fix and Flip Loan Costs',item:url}]}];
+---
+<Base title="Fix and Flip Loan Costs: Rates, ARV and Fees | Atlanta Fix & Flip Loan" description="How fix and flip loan costs fit together: rates, after-repair value, advances, fees and an illustrative worked example using sample placeholder terms." path="/fix-and-flip-loan-costs/" jsonld={jsonld} fabHref="/#deal-form">
+<Header base="/"/><main>
+<section class="guide-hero"><div class="container"><h1>Fix and Flip Loan Costs</h1></div></section>
+<section class="section"><div class="container guide-prose">
+<p>The cost of a fix and flip loan is never one number. Interest, points or fees, closing charges and the length of the term all combine into the real cost of the money, and the advance against the property decides how much cash stays in your pocket during the project.</p>
+<p>This page uses the illustrative sample terms shown across this site to demonstrate the math. They are placeholders for layout, not current terms, a quote or a promise that any lender offers them.</p>
+</div></section>
+<section class="section section--tint"><div class="container">
+<h2>The illustrative sample terms</h2>
+<p class="section__intro">These are the same placeholder figures used on every page of this site. Replace them mentally with the written terms from any actual offer you review.</p>
+<div class="term-grid"><div><span>Interest rate</span><strong>{loanTerms.rate}</strong></div><div><span>Advance</span><strong>{loanTerms.advance}</strong></div><div><span>Loan amount</span><strong>{loanTerms.range}</strong></div><div><span>Term</span><strong>{loanTerms.duration}</strong></div><div><span>Timing</span><strong>{loanTerms.timing}</strong></div></div>
+<p class="term-disclosure">{loanTerms.disclosure}</p>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>How the after-repair value shapes the loan</h2>
+<p>The after-repair value, or ARV, is the estimated resale price of the finished home. When an advance is expressed as a share of ARV, the estimate behind that number does real work: the higher and better supported the ARV, the more a lender may advance against the project.</p>
+<p>Support the estimate with comparable sales that match the finished home, not the property as it sits today. A lender will test the same comparisons when it reviews your file.</p>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>An illustrative worked example</h2>
+<p>Suppose a purchase at $250,000 with a $60,000 renovation budget and a supported resale estimate of $400,000. Under the illustrative advance of up to 75% of the after-repair value, the example loan could reach $300,000.</p>
+<p>The purchase plus renovation total $310,000, so the example buyer would bring the remaining $10,000 plus closing costs, fees, interest and reserves. At an illustrative 11% annual rate over a nine month hold, interest on $300,000 would run about $24,750. Every figure here is made up to show the math and is not a quote.</p>
+<p>The four priority city pages on this site carry similar worked examples with local settings, like the ones for <a href="/atlanta/">Atlanta</a>, <a href="/mableton/">Mableton</a>, <a href="/chamblee/">Chamblee</a> and <a href="/milton/">Milton</a>.</p>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>The other costs in the file</h2>
+<p>Interest is only one line. Points or origination fees may be charged at closing. The closing attorney and title charges apply in Georgia like any purchase. Insurance during the project, and in some cases draw or inspection fees, can add to the total.</p>
+<p>Ask for the complete list in writing before you commit. Two offers with the same rate can produce very different totals once the fees are counted.</p>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>How to compare offers</h2>
+<p>Total the interest over the months you actually expect to hold the property, add every fee, and add the closing costs on the file. Compare that full number across offers rather than comparing rates alone.</p>
+<p>The funding process behind these figures is covered in <a href="/how-fix-and-flip-funding-works-in-georgia/">how fix and flip funding works in Georgia</a>, and the <a href="/fix-and-flip-vs-hard-money/">fix and flip vs hard money</a> guide explains how this kind of loan relates to other products.</p>
+</div></section>
+<section class="section" id="faq"><div class="container faq"><h2>Common questions about costs</h2><div>{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+<section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and discuss possible funding connections without promising a loan.</p><a class="btn" href="/#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
+</main><Footer/></Base>
