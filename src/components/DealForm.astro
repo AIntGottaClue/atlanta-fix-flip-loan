@@ -54,7 +54,8 @@ const {cityName,location}=Astro.props;
     e.preventDefault();
     var id = ++seq;
     attempt = { id: id, name: form.elements.full_name.value.trim(), phone: phone.value,
-      email: form.elements.email.value.trim(), submitted: false };
+      email: form.elements.email.value.trim(), details: form.elements.page_details.value.trim(),
+      location: form.elements.page_location.value, submitted: false };
     status.textContent = 'Submitting...';
     setTimeout(function () {
       if (attempt && attempt.id === id) {
@@ -75,7 +76,8 @@ const {cityName,location}=Astro.props;
         var data = event.formData || {};
         var current = attempt;
         if (event.type === 'external_form_submission' && data.full_name === current.name &&
-            data.phone === current.phone && data.email === current.email && !current.submitted) {
+            data.phone === current.phone && data.email === current.email &&
+            data.page_details === current.details && data.page_location === current.location && !current.submitted) {
           current.submitted = true;
           pending.then(function (response) {
             return response.clone().json().then(function (body) {
