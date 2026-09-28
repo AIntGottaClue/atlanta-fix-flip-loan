@@ -3,15 +3,9 @@ import {formName} from '../data/cities';
 interface Props { cityName:string; location:string; }
 const {cityName,location}=Astro.props;
 ---
-<div class="hero__form-card" id="deal-form"><div class="form-intro"><h2>Tell us about your project</h2><p>Share what you know about the {cityName} property. A submission is not a loan application or approval.</p></div>
-<form id={formName} name={formName} class="deal-form" method="POST">
-<input type="text" class="deal-form__ghost" name="fnf_site" value="Atlanta Fix &amp; Flip Loan" tabindex="-1" aria-hidden="true" readonly/><input type="text" class="deal-form__ghost" name="fnf_location" value={location} tabindex="-1" aria-hidden="true" readonly/>
-<div class="deal-form__trap" aria-hidden="true"><label for="wdc_website">Website</label><input id="wdc_website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
-<div class="deal-form__field"><label for="full_name">Name</label><input id="full_name" name="full_name" type="text" autocomplete="name" required /></div>
-<div class="deal-form__row"><div class="deal-form__field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required /></div><div class="deal-form__field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div></div>
-<div class="deal-form__field"><label for="fnf_details">Tell us about the deal</label><textarea id="fnf_details" name="fnf_details" rows="4" placeholder="Property address, purchase, renovation plan and intended resale" required></textarea></div>
-<button class="btn deal-form__submit" type="submit">Submit your project <span aria-hidden="true">↗</span></button><p class="deal-form__fine">We use your information to respond to your request. Read our <a href="/privacy/">Privacy Policy</a>.</p></form>
-<div class="deal-success" id="deal-success" role="status" aria-live="polite" tabindex="-1" hidden><h2>Project details received</h2><p>Thanks for sharing the details. This is not an approval or a commitment to fund your project.</p><button type="button" class="deal-success__again">Submit another project</button></div></div>
-<script is:inline>
-(function(){var form=document.querySelector('.hero__form-card form');if(!form)return;var phone=form.querySelector('input[name="phone"]'),success=document.getElementById('deal-success'),card=form.closest('.hero__form-card');function normalize(){var d=phone.value.replace(/\D/g,'');if(d.length===11&&d.charAt(0)==='1')d=d.slice(1);if(d.length===10&&/^[2-9]\d{2}[2-9]\d{6}$/.test(d)){phone.value='+1'+d;phone.setCustomValidity('');return true}phone.setCustomValidity('Please enter a 10-digit US phone number.');return false}phone.addEventListener('blur',normalize);phone.addEventListener('input',function(){phone.setCustomValidity('')});window.addEventListener('submit',function(e){if(e.target===form)normalize()},true);form.addEventListener('submit',function(e){e.preventDefault();normalize();var bad=Array.from(form.querySelectorAll('[required]')).find(function(el){return !el.checkValidity()});if(bad){bad.reportValidity();bad.focus();return}var btn=form.querySelector('button[type="submit"]');btn.disabled=true;setTimeout(function(){form.hidden=true;card.querySelector('.form-intro').hidden=true;success.hidden=false;success.scrollIntoView({behavior:'smooth',block:'center'});success.focus({preventScroll:true});btn.disabled=false},800)});card.querySelector('.deal-success__again').addEventListener('click',function(){form.reset();success.hidden=true;form.hidden=false;card.querySelector('.form-intro').hidden=false;form.querySelector('input[name="full_name"]').focus()})})();
-</script>
+<div class="hero__form-card" id="deal-form">
+  <div class="form-intro">
+    <h2>Project form is temporarily unavailable</h2>
+    <p>We are setting up a secure way to receive project details. Please check back soon. No information is being collected here yet.</p>
+  </div>
+</div>
