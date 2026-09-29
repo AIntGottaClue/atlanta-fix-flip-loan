@@ -3,13 +3,14 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {brand,domain} from '../data/cities';
-import {loanTerms} from '../data/loanTerms';
+import {getLoanTerms} from '../data/loanTerms';
+const loanTerms=await getLoanTerms();
 const url=`https://${domain}/how-fix-and-flip-funding-works-in-georgia/`;
 const faqs=[
   {q:'Is Atlanta Fix & Flip Loan the lender?',a:'No. We connect investors with potential funding sources. Any lender makes its own decisions and provides the actual terms on a specific file.'},
   {q:'Do I need fix and flip experience?',a:'Lenders look at the whole file, and experience is one part of it. A clear renovation plan, a supported resale estimate and a realistic budget matter on every deal, whether it is your first project or your fifteenth.'},
   {q:'How much cash do I need to bring?',a:'That depends on the advance a lender offers against the property and the after-repair value. If the loan does not cover the full purchase and renovation, the difference plus closing costs and reserves comes from you. The lender\u2019s offer will show its own structure.'},
-  {q:'How fast can funding move?',a:`Timelines vary by lender and by file. Complete paperwork moves faster than a file with open questions. The illustrative figures on this site use ${loanTerms.timing} as a sample, not a promise.`},
+  {q:'How fast can funding move?',a:`The lender describes ${loanTerms.closingSpeed}, but actual closing depends on its review and a complete file. No closing date is guaranteed.`},
   {q:'Can I buy through an LLC?',a:'Many investors purchase through an entity. If you do, expect the closing attorney and the lender to ask for the entity documents for the file. The choice of entity belongs with your own legal and tax advisors.'}
 ];
 const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'How Fix and Flip Funding Works in Georgia',url,description:'The asset-based fix and flip funding process in Georgia: what a lender looks at, the paperwork a file usually needs, and how a project moves toward closing.',isPartOf:{'@type':'WebSite',name:brand,url:`https://${domain}/`}},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:'How Fix and Flip Funding Works in Georgia',item:url}]}];
@@ -46,7 +47,7 @@ const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'How Fix a
 </div></section>
 <section class="section"><div class="container guide-prose">
 <h2>A word about timing</h2>
-<p>Every lender sets its own pace, and no one can promise a closing date before a file exists. The illustrative figures on this site use a sample timing of {loanTerms.timing} to show how an offer might be presented. That figure is a placeholder, not a commitment from any lender.</p>
+<p>The lender describes {loanTerms.closingSpeed} and {loanTerms.drawTiming}. Those are its stated program features, not a guaranteed date for any project. Ask the lender to confirm the timing and conditions on your file in writing.</p>
 <p>If you are weighing this structure against other options, the <a href="/fix-and-flip-vs-hard-money/">fix and flip vs hard money</a> guide compares them honestly, including the cases where a different product fits better.</p>
 </div></section>
 <section class="section section--tint" id="faq"><div class="container faq"><h2>Common questions about the process</h2><div>{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
