@@ -3,8 +3,9 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {brand,domain} from '../data/cities';
-import {getLoanTerms,rateStructures} from '../data/loanTerms';
+import {getLoanTerms,rateStructures,workedExample,dollars} from '../data/loanTerms';
 const loanTerms=await getLoanTerms();
+const example=workedExample(loanTerms);
 const url=`https://${domain}/fix-and-flip-loan-costs/`;
 const faqs=[
   {q:'Are the rates on this page real offers?',a:"These are lender-stated program terms, not an offer for your project. Review the complete written terms on your file."},
@@ -28,6 +29,7 @@ const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and F
 <div class="term-grid">{rateStructures(loanTerms).map(structure => <div><span>{structure.name}</span><strong>{structure.closing} at closing</strong><p>{structure.monthly} payments; {structure.balloon}. Optional {loanTerms.extensionMonths} for {structure.extension}, only if all payments have been made on time.</p></div>)}</div>
 <p class="term-disclosure">Program descriptions do not guarantee financing or a particular closing or draw date. The lender's written offer controls.</p>
 </div></section>
+{example && <section class="section"><div class="container guide-prose"><h2>Worked loan cost example</h2><p>An illustrative {dollars(example.amount)} loan held for {example.months} months ({example.assumption.toLowerCase()}) would produce these costs using the current sheet terms. These are calculated at request time, not fixed estimates.</p><ul>{example.structures.map(x=><li><strong>{x.name}:</strong> {dollars(x.points)} closing points + {dollars(x.monthly)} per month × {example.months} months = {dollars(x.total)} before other charges. If an eligible extension is granted, its points alone would be {dollars(x.extension)}.</li>)}</ul><p>The example leaves out principal repayment, title and closing costs, insurance, draw or inspection costs, taxes and other actual charges. The lender's written offer controls; this is not an approval or guaranteed cost.</p></div></section>}
 <section class="section"><div class="container guide-prose">
 <h2>How the after-repair value shapes the loan</h2>
 <p>The after-repair value, or ARV, is the estimated resale price of the finished home. When an advance is expressed as a share of ARV, the estimate behind that number does real work: the higher and better supported the ARV, the more a lender may advance against the project.</p>
