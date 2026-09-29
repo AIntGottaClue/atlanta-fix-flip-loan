@@ -24,3 +24,9 @@ const nearby = slug && nearbyAreas[slug] ? nearbyAreas[slug].map(s=>cities.find(
 {showCityGrid && <section class="section section--tint" id="service-areas"><div class="container"><h2>Explore metro Atlanta</h2><p class="section__intro">Every property deserves a local look. Find your city below, then share the details of your project.</p><div class="city-grid">{cities.map(c=><a href={`/${c.slug}/`}><span>{c.county} County</span><strong>{c.name}</strong><span aria-hidden="true">↗</span></a>)}</div></div></section>}
 {nearby.length>0 && <section class="nearby" aria-label="Nearby service areas"><div class="container"><h2 class="nearby__title">Nearby service areas</h2><ul class="nearby__list">{nearby.map(c=><li><a href={`/${c.slug}/`}>{c.name}, GA</a></li>)}</ul></div></section>}
 <section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and discuss possible funding connections without promising a loan.</p><a class="btn" href="#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
+<style>
+.structure-table{table-layout:fixed;width:100%}
+.structure-table th,.structure-table td{overflow-wrap:anywhere}
+.structure-table thead th:first-child,.structure-table tbody th{width:28%}
+@media(max-width:600px){.structure-table{font-size:12px}.structure-table.compare-table thead th,.structure-table.compare-table tbody th,.structure-table.compare-table td{padding:9px 7px;white-space:normal}.structure-table thead th:first-child,.structure-table tbody th{width:28%}}
+</style>
