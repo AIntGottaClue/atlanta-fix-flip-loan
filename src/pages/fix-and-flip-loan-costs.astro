@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import DealForm from '../components/DealForm.astro';
 import {brand,domain} from '../data/cities';
 import {getLoanTerms,rateStructures,workedExample,dollars} from '../data/loanTerms';
 const loanTerms=await getLoanTerms();
@@ -16,9 +17,9 @@ const faqs=[
 ];
 const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and Flip Loan Costs',url,description:'How fix and flip loan costs fit together: monthly interest, closing points, extensions and the complete written offer.',isPartOf:{'@type':'WebSite',name:brand,url:`https://${domain}/`}},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:'Fix and Flip Loan Costs',item:url}]}];
 ---
-<Base title="Fix and Flip Loan Costs: Rates, ARV and Fees | Atlanta Fix & Flip Loan" description="How fix and flip loan costs fit together: monthly interest, closing points, extensions and the complete written offer." path="/fix-and-flip-loan-costs/" jsonld={jsonld} fabHref="/#deal-form">
+<Base title="Fix and Flip Loan Costs: Rates, ARV and Fees | Atlanta Fix & Flip Loan" description="How fix and flip loan costs fit together: monthly interest, closing points, extensions and the complete written offer." path="/fix-and-flip-loan-costs/" jsonld={jsonld} fabHref="#deal-form">
 <Header base="/"/><main>
-<section class="guide-hero"><div class="container"><h1>Fix and Flip Loan Costs</h1></div></section>
+<section class="hero" id="main"><div class="container hero__inner"><div class="hero__content"><h1>Fix and Flip <em>Loan Costs</em></h1><div class="hero__rule"></div><p>See how our points, monthly interest and extension terms affect a fix and flip project. Tell us about your Atlanta Metro property and renovation plan to discuss the costs for your project.</p></div><DealForm cityName="Atlanta Metro" location="Loan Costs Guide" /></div></section>
 <section class="section section--tint"><div class="container">
 <h2>Our financing structures</h2>
 <p class="section__intro">Our program describes financing up to {loanTerms.fundingMax} with {loanTerms.closingSpeed} and {loanTerms.drawTiming}. Our listed terms are {loanTerms.feeDisclosure}. Ask for all charges and timing in writing.</p>
@@ -45,7 +46,7 @@ const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and F
 <p>The funding process behind these figures is covered in <a href="/how-fix-and-flip-funding-works-in-georgia/">how fix and flip funding works in Georgia</a>, and the <a href="/fix-and-flip-vs-hard-money/">fix and flip vs hard money</a> guide explains how this kind of loan relates to other products.</p>
 </div></section>
 <section class="section" id="faq"><div class="container faq"><h2>Common questions about costs</h2><div>{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
-<section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and discuss possible funding connections without promising a loan.</p><a class="btn" href="/#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
+<section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and discuss possible funding connections without promising a loan.</p><a class="btn" href="#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
 </main><Footer/></Base>
 
 <style>
