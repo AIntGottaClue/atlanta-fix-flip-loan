@@ -14,7 +14,7 @@ export const fallbackLoanTerms: LoanTerms = {
   extensionMonths: '6-month extension',
   exampleLoanAmount: '', exampleHoldMonths: '', exampleAssumption: ''
 };
-const GVIZ_URL = 'https://docs.google.com/spreadsheets/d/1RJZWDxSq3ZSm_tffqtjYtSZNkWPJs5GtGcyoNRd4jXI/gviz/tq?tqx=out:json&sheet=fees';
+const GVIZ_URL = 'https://docs.google.com/spreadsheets/d/1RJZWDxSq3ZSm_tffqtjYtSZNkWPJs5GtGcyoNRd4jXI/gviz/tq?tqx=out:json&sheet=fees&headers=1';
 const TTL = 180_000;
 const store = globalThis as { __fnfTerms?: { at: number; terms: LoanTerms } };
 export async function getLoanTerms(): Promise<LoanTerms> {
