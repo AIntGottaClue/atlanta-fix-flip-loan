@@ -1,6 +1,6 @@
 export interface City { slug:string; name:string; county:string; title:string; description:string; intro:string; angle:string; caution:string; }
 export const brand = "Atlanta Fix & Flip Loan";
-export const domain = "atlanta.privatemoneyloans.click";
+export const domain = "atlantafixandflip.loansapp.cfd";
 export const formName = "Atlanta-Fix-Flip-Loan-Form";
 export const cities: City[] = [
   {"slug": "atlanta", "name": "Atlanta", "county": "Fulton", "title": "Fix and Flip Loans in Atlanta, GA | Atlanta Fix & Flip Loan", "description": "Explore fix and flip loan connections for Atlanta, Georgia investors. Share the property and renovation plan for a project-specific review.", "intro": "BeltLine-area bungalows and southwest brick ranches call for very different renovation scopes. If you are planning a fix and flip in Atlanta, share the property, your repair plan and intended resale. We connect investors with potential funding sources and are not a direct lender.", "angle": "The location and renovation scope should be considered together. BeltLine-area bungalows and southwest brick ranches call for very different renovation scopes.", "caution": "Review the property condition and the planned resale before you set the budget. Atlanta projects can vary block by block, so a local comparable sale deserves a closer look than a broad city average. We can discuss a possible funding connection once you have the project details ready."},
